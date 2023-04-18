@@ -4,7 +4,7 @@ Ejecute el comando npm i para instalar las dependencias del proyecto
 
 <b>Variables de Entorno</b>
 
-Para levantar el servidor debera declarar en un archivo.env las variables de entorno:
+Para levantar el servidor debera declarar en un archivo.env las variables de entorno:<br/>
 MONGODB_CNN (url de su base de datos de mongoDB)
 PORT (puerto donde quiere levantar el servidor)
 
