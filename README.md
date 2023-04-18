@@ -2,7 +2,7 @@
 
 <b>npm i</b><br/>
 
-Ejecute el comando npm i para instalar las dependencias del proyecto
+Ejecute el comando npm i para instalar las dependencias del proyecto luego de haber clonado el proyecto previamente.
 
 <b>Variables de Entorno</b>
 
