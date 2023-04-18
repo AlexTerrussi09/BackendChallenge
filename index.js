@@ -4,7 +4,7 @@ const { dbConnection } = require("./src/dataBase/Config.js");
 
 const v1Router = require('./src/routes/Routes.js')
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 server.use('/api/v1/starwars', v1Router)
 
