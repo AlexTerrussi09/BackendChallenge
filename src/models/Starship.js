@@ -52,13 +52,13 @@ const StarshipSchema = Schema({
         type: String,
         required: true
     },
-    created:{
+    created: {
         type: Date,
-        required: true
+        default : Date.now
     },
     edited: {
         type: Date,
-        required: true
+        default : Date.now
     }
 });
 

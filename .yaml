@@ -1,20 +1,6 @@
 openapi: 3.0.3
 info:
   title: StarWars API
-  description: |-
-    This is a sample Film Store Server based on the OpenAPI 3.0 specification.  You can find out more about
-    Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the Film store, we've switched to the design first approach!
-    You can now help us improve the API whether it's by making changes to the definition itself or to the code.
-    That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
-
-    _If you're looking for the Swagger 2.0/OAS 2.0 version of Filmstore, then click [here](https://editor.swagger.io/?url=https://Filmstore.swagger.io/v2/swagger.yaml). Alternatively, you can load via the `Edit > Load Filmstore OAS 2.0` menu option!_
-    
-    Some useful links:
-    - [The Film Store repository](https://github.com/swagger-api/swagger-Filmstore)
-    - [The source API definition for the Film Store](https://github.com/swagger-api/swagger-Filmstore/blob/master/src/main/resources/openapi.yaml)
-
-  license:
-    name: MIT
   version: 1.0.0
 servers:
   - url: http://localhost:3001/api/v1/starwars
@@ -454,7 +440,7 @@ paths:
       description: delete a Starship
       operationId: deleteStarship
       parameters:
-        - name: starshiptId
+        - name: starshipId
           in: path
           description: Starship id to delete
           required: true
@@ -472,6 +458,13 @@ components:
     Film:
       required:
         - title
+        - episode_id
+        - opening_crawl
+        - director
+        - producer
+        - release_date
+        - created
+        - edited
       type: object
       properties:
         title:
@@ -503,6 +496,16 @@ components:
     Planet:
       required:
         - name
+        - rotation_period
+        - orbital_period
+        - diameter
+        - climate
+        - gravity
+        - terrain
+        - surface_water
+        - population
+        - created
+        - edited
       type: object
       properties:
         name:
@@ -547,6 +550,20 @@ components:
     Starship:
       required:
         - name
+        - model
+        - manufacturer
+        - cost_in_credits
+        - length
+        - max_atmosphering_speed
+        - crew
+        - passengers
+        - cargo_capacity
+        - consumables
+        - hyperdrive_rating
+        - MGLT
+        - starship_class
+        - created
+        - edited
       type: object
       properties:
         name:

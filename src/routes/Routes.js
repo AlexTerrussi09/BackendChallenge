@@ -6,11 +6,9 @@ const FilmsRouter = require('./FilmsRouter')
 const PlanetsRouter = require('./PlanetsRouter')
 const StarshipsRouter = require('./StarshipsRouter')
 
-
-router.use('/films', FilmsRouter)
-
-router.use('/planets', PlanetsRouter)
-
-router.use('/starships', StarshipsRouter)
+router
+.use('/films', FilmsRouter)
+.use('/planets', PlanetsRouter)
+.use('/starships', StarshipsRouter)
 
 module.exports = router;

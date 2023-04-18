@@ -40,13 +40,11 @@ const PlanetSchema = Schema({
     },
     created: {
         type: Date,
-        default : Date.now,
-        required: true
+        default : Date.now
     },
     edited: {
         type: Date,
-        default : Date.now,
-        required: true
+        default : Date.now
     }
 });
 

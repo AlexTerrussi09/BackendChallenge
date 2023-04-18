@@ -8,7 +8,7 @@ Ejecute el comando npm i para instalar las dependencias del proyecto
 
 Para levantar el inicializar debera declarar en un archivo.env las variables de entorno:<br/><br/>
 MONGODB_CNN (url de su base de datos de mongoDB)
-PORT (puerto donde quiere inicializar el servidor)
+PORT = 3001
 
 <b>npm start</b><br/>
 

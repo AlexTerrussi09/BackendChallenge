@@ -23,15 +23,15 @@ const FilmSchema = Schema({
     },
     release_date:{
         type: Date,
-        required: true
+        required: true,
     },
     created: {
         type: Date,
-        required: true
+        default : Date.now
     },
     edited: {
         type: Date,
-        required: true
+        default : Date.now
     }
 });
 
