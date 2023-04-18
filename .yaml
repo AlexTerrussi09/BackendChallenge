@@ -1,0 +1,628 @@
+openapi: 3.0.3
+info:
+  title: StarWars API
+  description: |-
+    This is a sample Film Store Server based on the OpenAPI 3.0 specification.  You can find out more about
+    Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the Film store, we've switched to the design first approach!
+    You can now help us improve the API whether it's by making changes to the definition itself or to the code.
+    That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
+
+    _If you're looking for the Swagger 2.0/OAS 2.0 version of Filmstore, then click [here](https://editor.swagger.io/?url=https://Filmstore.swagger.io/v2/swagger.yaml). Alternatively, you can load via the `Edit > Load Filmstore OAS 2.0` menu option!_
+    
+    Some useful links:
+    - [The Film Store repository](https://github.com/swagger-api/swagger-Filmstore)
+    - [The source API definition for the Film Store](https://github.com/swagger-api/swagger-Filmstore/blob/master/src/main/resources/openapi.yaml)
+
+  license:
+    name: MIT
+  version: 1.0.0
+servers:
+  - url: http://localhost:3001/api/v1/starwars
+tags:
+  - name: films
+    description: Everything about our films
+    
+  - name: planets
+    description: Access to Filmstore orders
+
+  - name: starships
+    description: Operations about user
+paths:
+  /films:
+    get:
+        tags:
+          - films
+        summary: Find all films
+        description: Returns a all Films
+        operationId: getAllFilms
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Film'          
+              application/xml:
+                schema:
+                  $ref: '#/components/schemas/Film'
+          '400':
+            description: Invalid ID supplied
+          '404':
+            description: Film not found
+
+
+    post:
+      tags:
+        - films
+      summary: Add a new film to the store
+      description: Add a new film to the store
+      operationId: addFIlm
+      requestBody:
+        description: Create a new film in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Film'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Film'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Film'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Film'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Film'
+        '405':
+          description: Invalid input
+
+
+  /films/{filmId}:
+    get:
+      tags:
+        - films
+      summary: Find film by ID
+      description: Returns a single Film
+      operationId: getFilmById
+      parameters:
+        - name: filmId
+          in: path
+          description: ID of film to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Film'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Film'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Film not found
+    put:
+      tags:
+        - films
+      summary: Update an existing film
+      description: Update an existing film by Id
+      operationId: updateFilm
+      parameters:
+        - name: filmId
+          in: path
+          description: ID of film to return
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent film in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Film'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Film'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Film'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Film'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Film'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Film not found
+        '405':
+          description: Validation exception
+    delete:
+      tags:
+        - films
+      summary: Deletes a Film by ID
+      description: delete a Film
+      operationId: deleteFilm
+      parameters:
+        - name: filmId
+          in: path
+          description: Film id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid Film value
+        '404':
+          description: Film not found
+        '405':
+          description: Validation exception
+  /planets:
+    get:
+        tags:
+          - planets
+        summary: Find all planets
+        description: Returns a all Planets
+        operationId: getAllPlanets
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Planet'          
+              application/xml:
+                schema:
+                  $ref: '#/components/schemas/Planet'
+          '400':
+            description: Invalid ID supplied
+          '404':
+            description: Planet not found
+
+
+    post:
+      tags:
+        - planets
+      summary: Add a new Planet to the store
+      description: Add a new Planet to the store
+      operationId: postPlanet
+      requestBody:
+        description: Create a new Planet in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Planet'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Planet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Planet'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Planet'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Planet'
+        '405':
+          description: Invalid input
+
+
+  /planets/{planetId}:
+    get:
+      tags:
+        - planets
+      summary: Find Planet by ID
+      description: Returns a single Planet
+      operationId: getPlanetsById
+      parameters:
+        - name: planetId
+          in: path
+          description: ID of planet to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Planet'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Planet'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Planet not found
+    put:
+      tags:
+        - planets
+      summary: Update an existing Planet
+      description: Update an existing Planet by Id
+      operationId: updatePlanet
+      parameters:
+        - name: planetId
+          in: path
+          description: ID of Planet to return
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent Planet in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Planet'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Planet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Planet'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Planet'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Planet'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Planet not found
+        '405':
+          description: Validation exception
+    delete:
+      tags:
+        - planets
+      summary: Deletes a Planet by ID
+      description: delete a Planet
+      operationId: deletePlanet
+      parameters:
+        - name: planetId
+          in: path
+          description: Planet id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid Planet value
+        '404':
+          description: Planet not found
+        '405':
+          description: Validation exception
+  
+  /starships:
+    get:
+        tags:
+          - starships
+        summary: Find all starships
+        description: Returns a all starships
+        operationId: getAllStarships
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Starship'          
+              application/xml:
+                schema:
+                  $ref: '#/components/schemas/Starship'
+          '400':
+            description: Invalid ID supplied
+          '404':
+            description: Starship not found
+
+
+    post:
+      tags:
+        - starships
+      summary: Add a new starships to the store
+      description: Add a new starships to the store
+      operationId: postStarship
+      requestBody:
+        description: Create a new starships in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Starship'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Starship'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Starship'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Starship'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Starship'
+        '405':
+          description: Invalid input
+
+
+  /starships/{starshipId}:
+    get:
+      tags:
+        - starships
+      summary: Find Planet by ID
+      description: Returns a single Starship
+      operationId: getStarshipById
+      parameters:
+        - name: starshipId
+          in: path
+          description: ID of Starship to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Starship'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Starship'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Starship not found
+    put:
+      tags:
+        - starships
+      summary: Update an existing Starship
+      description: Update an existing Starship by Id
+      operationId: updateStarship
+      parameters:
+        - name: starshipId
+          in: path
+          description: ID of Starship to return
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent Starship in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Starship'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Starship'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Starship'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Starship'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Starship'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Starship not found
+        '405':
+          description: Validation exception
+    delete:
+      tags:
+        - starships
+      summary: Deletes a Starship by ID
+      description: delete a Starship
+      operationId: deleteStarship
+      parameters:
+        - name: starshiptId
+          in: path
+          description: Starship id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid Starship value
+        '404':
+          description: Planet not found
+        '405':
+          description: Validation exception
+components:
+  schemas:
+    Film:
+      required:
+        - title
+      type: object
+      properties:
+        title:
+          type: string
+          example: Pelicula test
+        episode_id:
+          type: number
+          example: 2
+        opening_crawl:
+          type: string
+          example: Hola mundo !!!
+        director:
+          type: string
+          example: Alex Terrussi
+        producer:
+          type: string
+          example: Terrussi Alex
+        release_date:
+          type: string
+          example: 12-12-2000
+        created:
+          type: string
+          example: 12-12-2000
+        edited:
+          type: string
+          example: 12-12-2000
+      xml:
+        name: Film
+    Planet:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          example: Marte
+        rotation_period:
+          type: number
+          example: 2
+        orbital_period:
+          type: number
+          example: 3
+        diameter:
+          type: number
+          example: 5000
+        climate:
+          type: array
+          items:
+            type: object
+          example: temperate, tropical
+        gravity:
+          type: number
+          example: 9,81
+        terrain:
+          type: array
+          items: 
+              type: object
+          example: jungle, rainforests
+        surface_water:
+          type: number
+          example: 1
+        population:
+          type: number
+          example: 11111
+        created:
+          type: string
+          example: 12-12-2000
+        edited:
+          type: string
+          example: 12-12-2000
+      xml:
+        name: Planet
+    Starship:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          example: CR90 corvette
+        model:
+          type: string
+          example: CR90 corvette
+        manufacturer:
+          type: array
+          items: 
+              type: object
+          example: Sienar Fleet Systems, Cyngus Spaceworks
+        cost_in_credits:
+          type: number
+          example: 5000
+        length:
+          type: number
+          example: 123
+        max_atmosphering_speed:
+          type: number
+          example: 981
+        crew:
+          type: string
+          example: 30-165
+        passengers:
+          type: number
+          example: 12
+        cargo_capacity:
+          type: number
+          example: 11111
+        consumables:
+          type: string
+          example: 1 year
+        hyperdrive_rating:
+          type: number
+          example: 2.0
+        MGLT:
+          type: number
+          example: 60
+        starship_class:
+          type: string
+          example: corvette
+        created:
+          type: string
+          example: 12-12-2000
+        edited:
+          type: string
+          example: 12-12-2000
+      xml:
+        name: Starship
+  requestBodies:
+    Film:
+      description: Film object that needs to be added to the store
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Film'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Film'
+    Planet:
+      description: Planet object that needs to be added to the store
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Planet'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Planet'
+    Starship:
+      description: Starship object that needs to be added to the store
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Starship'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Starship'
